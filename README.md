@@ -25,7 +25,7 @@
 
 2. Install dependencies:
     ```sh
-    pip install -U python-dotenv discord.py
+    pip install -U python-dotenv discord.py bs4 requests
     ```
 
 ## License

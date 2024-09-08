@@ -34,3 +34,6 @@
 make
 **.make
 Makefile
+
+# Token
+Bot/BotToken.txt

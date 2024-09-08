@@ -2,11 +2,10 @@ project "Bot"
 	kind "ConsoleApp"
 	language "C++"
 	cppdialect "C++20"
-	staticruntime "off"
 	
 	architecture "x86_64"
 	
-	-- debugdir ("%{wks.location}/bin/" .. outputdir .. "/%{prj.name}") 
+	debugdir ("%{wks.location}") 
 	
 	targetdir ("%{wks.location}/bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("%{wks.location}/bin-int/" .. outputdir .. "/%{prj.name}")

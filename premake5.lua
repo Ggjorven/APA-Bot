@@ -6,7 +6,7 @@ Dependencies =
 	DPP = 
 	{
 		LibName = "DPP",
-		IncludeDir = "%{wks.location}/vendor/DPP/ TODO"
+		IncludeDir = "%{wks.location}/vendor/DPP/include"
 	}
 }
 ------------------------------------------------------------------------------
@@ -14,7 +14,7 @@ Dependencies =
 ------------------------------------------------------------------------------
 -- Solution
 ------------------------------------------------------------------------------
-outputdir = "%{cfg.buildcfg}-" .. FirstToUpper("%{cfg.system}")
+outputdir = "%{cfg.buildcfg}-" .. "%{cfg.system}"
 
 workspace "APA-Bot"
 	architecture "x86_64"

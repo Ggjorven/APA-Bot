@@ -1,5 +1,8 @@
 from discord.ext import commands
+import re
 import typing
+
+from SourceGen import SourceGen
 
 class BotEvents:
     @staticmethod
@@ -21,10 +24,24 @@ class BotEvents:
         # Parse messages
         @bot.event
         async def on_message(message) -> None:
+            # Ignore messages from the bot itself
             if message.author == bot.user:
                 return
 
+            # Log message details
             print(f"Message from {message.author}: {message.content} (Channel: {message.channel}, ID: {message.id})")
 
-            # If the message was a command, wait for it to finish
+            # Regular expression to find URLs in the message
+            url_pattern = re.compile(r'(https?://\S+)')
+            urls: list[any] = url_pattern.findall(message.content)
+
+            for url in urls:
+                print(f"Found URL: {url}")
+
+                # Call extract_info for each URL and print the result
+                source: SourceGen = SourceGen(url)
+                print(f"Date Published: {source.GetDatePublished()}")
+                print(f"Author: {source.GetAuthor()}")
+
+            # Process commands if there are any
             await bot.process_commands(message)

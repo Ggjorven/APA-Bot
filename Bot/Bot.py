@@ -39,32 +39,6 @@ class Bot:
 
         self.bot = commands.Bot(command_prefix="!", intents=intents)
 
-        # Methods
-
-        # Events
-        @self.bot.event
-        async def on_ready() -> None:
-            print(f'{self.bot.user} has connected to Discord!')
-            for guild in self.bot.guilds:
-                print(f'Connected to guild: {guild.name} (id: {guild.id})')
-            # Sync the commands globally or for specific guilds
-            try:
-                print(f"Synced {len(await self.bot.tree.sync())} command(s) globally.\n")
-            except Exception as e:
-                print(f"Failed to sync commands: {e}")
-
-        @self.bot.event
-        async def on_message(message) -> None:
-            # Ignore messages from the bot itself
-            if message.author == self.bot.user:
-                return
-
-            # Log message details
-            print(f"Message from {message.author}: {message.content} (Channel: {message.channel}, ID: {message.id})")
-
-            # Process commands if there are any
-            await self.bot.process_commands(message)
-
     def Run(self) -> None:
         self.bot.run(self.token)
 
